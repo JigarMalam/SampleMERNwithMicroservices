@@ -28,7 +28,7 @@ pipeline {
         stage('Build & Push Docker Images') {
             steps {
                 script {
-                    def services = ["helloService-by-jigar"]
+                    def services = ["helloservice-by-jigar"]
                     for (s in services) {
                         sh """
                           echo "Building image for ${s}"
