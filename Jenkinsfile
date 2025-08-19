@@ -25,16 +25,21 @@ pipeline {
             }
         }
 
-        stage('Build & Push Docker Images') {
+            stage('Build & Push Docker Images') {
             steps {
                 script {
-                    def services = ["jigar-hello-service", "jigar-profile-service", "jigar-frontend-hp"]
-                    for (s in services) {
+                    def services = [
+                        [name: "jigar-hello-service", path: "backend/helloService"],
+                        [name: "jigar-profile-service", path: "backend/profileService"],
+                        [name: "jigar-frontend-hp", path: "frontend"]
+                    ]
+
+                    for (svc in services) {
                         sh """
-                          echo "Building image for ${s}"
-                          docker build -t ${s}:$IMAGE_TAG ./${s}
-                          docker tag ${s}:$IMAGE_TAG ${ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${s}:$IMAGE_TAG
-                          docker push ${ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${s}:$IMAGE_TAG
+                          echo "Building image for ${svc.name} from ${svc.path}"
+                          docker build -t ${svc.name}:$IMAGE_TAG ${svc.path}
+                          docker tag ${svc.name}:$IMAGE_TAG ${ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${svc.name}:$IMAGE_TAG
+                          docker push ${ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${svc.name}:$IMAGE_TAG
                         """
                     }
                 }
