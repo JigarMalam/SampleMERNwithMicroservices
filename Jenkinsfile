@@ -28,11 +28,11 @@ pipeline {
         stage('Build & Push Docker Images') {
             steps {
                 script {
-                    def services = ["helloService-by-jigar", "profileService-by-jigar", "frontend-by-jigar"]
+                    def services = ["helloService-by-jigar"]
                     for (s in services) {
                         sh """
                           echo "Building image for ${s}"
-                          docker build -t ${s}:$IMAGE_TAG ./${s}
+                          docker build -t ${s}:$IMAGE_TAG ./backend/helloService
                           docker tag ${s}:$IMAGE_TAG ${ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${s}:$IMAGE_TAG
                           docker push ${ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${s}:$IMAGE_TAG
                         """
