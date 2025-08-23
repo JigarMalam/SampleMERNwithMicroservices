@@ -1,4 +1,21 @@
 # MERN with Microservices
+This project simulates a production-grade cloud-native deployment workflow, showcasing how modern DevOps practices enable scalable, automated, and reliable application delivery on AWS
+
+# Use Case
+
+Build and deploy a containerized MERN application with separate microservices (frontend, hello service, profile service).
+Implement CI/CD pipeline using Jenkins to automate Docker image builds and push them to Amazon ECR.
+Use Infrastructure as Code (IaC) with Python (Boto3) to provision AWS infrastructure (VPC, Subnets, Security Groups, Auto Scaling Groups, Load Balancer).
+Deploy services on EC2 instances with Docker managed by Auto Scaling Groups.
+Route traffic through an Application Load Balancer (ALB) with health checks.
+Enable monitoring & logging via Amazon CloudWatch.
+
+🛠️ Tools & Technologies
+
+AWS: EC2, ECR, ALB, ASG, VPC, Route 53, CloudWatch, IAM
+DevOps: Jenkins, Docker, Boto3 (Python), Infrastructure as Code
+Application Stack: MERN (MongoDB, Express.js, React, Node.js)
+Version Control: GitHub 
 
 ## Detailed Folder Structure (with explanations)
 
