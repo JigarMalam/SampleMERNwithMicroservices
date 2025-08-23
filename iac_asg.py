@@ -16,7 +16,7 @@ ACCOUNT_ID = "975050024946"
                 # your AWS account ID
 TG_ARN_FRONTEND = "arn:aws:elasticloadbalancing:us-west-2:975050024946:targetgroup/tg-frontend-service-v3/abf91a8df11c8d13"
 TG_ARN_HELLO = "arn:aws:elasticloadbalancing:us-west-2:975050024946:targetgroup/tg-hello-service-v3/8db7e73110675adb"
-TG_ARN_PROFILE = "arn:aws:elasticloadbalancing:us-west-2:975050024946:targetgroup/tg-profile-service-v3/12d26c04ad2f32ffclear"
+TG_ARN_PROFILE = "arn:aws:elasticloadbalancing:us-west-2:975050024946:targetgroup/tg-profile-service-v3/12d26c04ad2f32ff"
 
 
 # ------------------ BOTO3 CLIENTS ------------------

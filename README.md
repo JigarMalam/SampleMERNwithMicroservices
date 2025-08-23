@@ -1,5 +1,54 @@
-# Sample MERN with Microservices this is from the Jigar Repo.
+# MERN with Microservices
 
+## Detailed Folder Structure (with explanations)
+
+```
+SampleMERNwithMicroservices/
+│
+├── backend/
+│   ├── helloService/        # Microservice 1 (Hello API)
+│   ├── profileService/      # Microservice 2 (Profile API)
+|   |── README.md/           # Backend documentation
+│
+├── frontend/                # React-based frontend
+│
+├── iac_alb.py               # IaC script to create ALB + Target Groups
+├── iac_asg.py               # IaC script to create ASG + Launch Templates
+├── iac_infra.py             # IaC script to create VPC, Subnets, SG
+|── README.md                # Backend documentation
+│
+├── Jenkinsfile              # CI/CD pipeline definition
+├── README.md                # Main documentation
+└── screenshots/             # Folder for architecture/setup screenshots
+
+```
+
+### Deployment Workflow Diagram
+```
+         Developer Commit
+                │
+                ▼
+          Jenkins Pipeline
+                │
+       ┌────────┴────────┐
+       ▼                 ▼
+ Docker Build        Docker Push
+(local/EC2)           to Amazon ECR
+                │
+                ▼
+     Infrastructure as Code (Boto3)
+                │
+       ┌────────┴────────┐
+       ▼                 ▼
+   Auto Scaling      Application
+     Groups          Load Balancer
+   (EC2 + Docker)     (ALB + TGs)
+       │
+       ▼
+   Frontend + Backend Services
+   (Accessible via ALB DNS)
+
+```
 
 
 For `helloService`, create `.env` file with the content:
